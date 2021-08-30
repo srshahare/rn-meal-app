@@ -7,7 +7,9 @@ import {
   TouchableOpacity,
   StatusBar,
 } from "react-native";
+import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CategoryGridTile from "../components/CategoryGridTile";
+import HeaderButton from "../components/HeaderButton";
 import Colors from "../constants/Colors";
 
 import { CATEGORIES } from "../data/dummy-data";
@@ -42,17 +44,11 @@ const CategoriesScreen = (props) => {
   );
 };
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  gridItem: {
-    flex: 1,
-    margin: 15,
-    height: 150,
-  },
-});
+CategoriesScreen.navigationOptions = {
+  headerTitle: "Meal Categories",
+  headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton} >
+    <Item title="menu" iconName="ios-menu" onPress={() => {}}></Item>
+  </HeaderButtons>
+}
 
 export default CategoriesScreen;
