@@ -17,15 +17,15 @@ import { CATEGORIES } from "../data/dummy-data";
 const CategoriesScreen = (props) => {
   const renderItem = (itemData) => {
     return (
-        <CategoryGridTile
+      <CategoryGridTile
         title={itemData.item.title}
         color={itemData.item.color}
         onSelect={() => {
           props.navigation.navigate({
-            routeName: 'CategoryMeals',
+            routeName: "CategoryMeals",
             params: {
-              categoryId: itemData.item.id
-            }
+              categoryId: itemData.item.id,
+            },
           });
         }}
       />
@@ -44,11 +44,21 @@ const CategoriesScreen = (props) => {
   );
 };
 
-CategoriesScreen.navigationOptions = {
-  headerTitle: "Meal Categories",
-  headerLeft: <HeaderButtons HeaderButtonComponent={HeaderButton} >
-    <Item title="menu" iconName="ios-menu" onPress={() => {}}></Item>
-  </HeaderButtons>
-}
+CategoriesScreen.navigationOptions = (navData) => {
+  return {
+    headerTitle: "Meal Categories",
+    headerLeft: () => (
+      <HeaderButtons HeaderButtonComponent={HeaderButton}>
+        <Item
+          title="menu"
+          iconName="ios-menu"
+          onPress={() => {
+            navData.navigation.toggleDrawer();
+          }}
+        ></Item>
+      </HeaderButtons>
+    ),
+  };
+};
 
 export default CategoriesScreen;

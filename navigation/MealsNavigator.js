@@ -70,15 +70,27 @@ const MealsFavNavigator = createMaterialBottomTabNavigator(
 );
 
 const FiltersNavigator = createStackNavigator({
-    Filters: FiltersScreen
+    Filters: {
+      screen: FiltersScreen
+    }
 })
 
 const MainNavigator = createDrawerNavigator({
   MealsFavs: {
     screen: MealsFavNavigator,
+    navigationOptions: {
+      drawerLabel: "Meals"
+    }
   },
   Filters: {
     screen :FiltersNavigator
+  }
+}, {
+  contentOptions: {
+    activeTintColor: Colors.secondaryColor,
+    labelStyle: {
+      fontFamily: 'open-sans-bold'
+    }
   }
 })
 
